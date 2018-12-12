@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<title layout:title-pattern="Najlepsze fury w mieście">Samochody</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="~{width=device-width, initial-scale=1}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+</head>
+<style>
+    .pagination-div{user-select: none;}
+    .pagination-div span{border-radius:3px;border:1px solid #999;
+        padding:5px;margin:10px 0px 0px 10px;display:inline-block}
+    span.selected{background:#ccf;}
+</style>
+<body>
+<div class="container">
+    <div class="page-header">
+
+        <h1>Samochody <small>Najlepsze furki w mieście</small></h1>
+        <h4>
+            <a href="/">Przeglądaj ogłoszenia</a> | <a href="/newoffer">Dodaj ogłoszenie</a>
+        </h4>
+    </div>
+    <div layout:fragment="content">
+        Tu będzie wstawiona właściwa zawartość widoku.
+    </div>
+</div>
+</body>
+</html>
