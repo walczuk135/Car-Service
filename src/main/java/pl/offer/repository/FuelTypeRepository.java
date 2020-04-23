@@ -1,7 +1,7 @@
-package pl.ogloszenia.repository;
+package pl.offer.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.ogloszenia.jpa.FuelType;
+import pl.offer.jpa.FuelType;
 
 import java.util.List;
 

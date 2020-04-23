@@ -1,12 +1,12 @@
-package pl.ogloszenia;
+package pl.offer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OgloszeniaApplication {
+public class OfferApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OgloszeniaApplication.class, args);
+        SpringApplication.run(OfferApplication.class, args);
     }
 }

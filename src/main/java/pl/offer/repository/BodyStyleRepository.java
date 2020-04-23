@@ -1,9 +1,8 @@
-package pl.ogloszenia.repository;
+package pl.offer.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.ogloszenia.jpa.BodyStyle;
+import pl.offer.jpa.BodyStyle;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public interface BodyStyleRepository extends JpaRepository<BodyStyle,Integer> {

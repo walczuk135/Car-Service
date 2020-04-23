@@ -1,19 +1,21 @@
-package pl.ogloszenia.jpa;
+package pl.offer.jpa;
+
 
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+
 @Entity
-@Table(name = "fuel_type")
-public class FuelType {
+@Table(name = "body_style")
+public class BodyStyle {
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
     @Size(max = 20)
+    @Column(name = "name")
     private String name;
 
     public Integer getId() {

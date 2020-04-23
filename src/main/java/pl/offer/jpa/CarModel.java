@@ -1,4 +1,4 @@
-package pl.ogloszenia.jpa;
+package pl.offer.jpa;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;

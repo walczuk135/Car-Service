@@ -1,12 +1,13 @@
-package pl.ogloszenia.repository;
+package pl.offer.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.ogloszenia.jpa.CarModel;
+import pl.offer.jpa.CarModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CarModelRepository extends JpaRepository<CarModel,Integer> {
-    CarModel findOfferById(int id);
+    Optional<CarModel> findOfferById(int id);
 
     List<CarModel> findAll();
 

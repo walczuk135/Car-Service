@@ -1,4 +1,4 @@
-package pl.ogloszenia.web;
+package pl.offer.web;
 
 public class OfferFilter {
     private Integer manufacturerId;

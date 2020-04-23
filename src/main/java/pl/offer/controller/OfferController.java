@@ -1,49 +1,45 @@
-package pl.ogloszenia.controller;
+package pl.offer.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.ogloszenia.jpa.*;
-import pl.ogloszenia.repository.OfferRepository;
-import pl.ogloszenia.service.OffersService;
-import pl.ogloszenia.web.OfferFilter;
+import pl.offer.jpa.*;
+import pl.offer.service.OffersService;
+import pl.offer.web.OfferFilter;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class OfferController {
 
-    @Autowired
-    OffersService offersService;
+
+    private final OffersService offersService;
+
+    OfferController(OffersService offersService) {
+        this.offersService = offersService;
+    }
 
     @GetMapping("/")
-    public String home(Model model, OfferFilter offerFilter,@PageableDefault(size = 10) Pageable pageable) {
+    public String home(Model model, OfferFilter offerFilter) {
         List<CarManufacturer> carManufacturers = offersService.getCarManufacturers();
         List<CarModel> carModels = offersService.getCarModels();
-        List<Offer> offers;
-        Page<Offer> page = offersService.page(pageable);
+        List<Offer> offers =offersService.getAllOffer();
+        //Page<Offer> page = offersService.page(pageable);
 
 
         if (offerFilter.getManufacturerId() != null) {
-            if ( offerFilter.getModelId() != null) {
-                page = (Page<Offer>) offersService.getOffersByModel(offerFilter.getModelId());
+            if(offerFilter.getModelId() != null) {
+                offers = offersService.getOffersByModel(offerFilter.getModelId());
                 carModels = offersService.getCarModels(offerFilter.getManufacturerId());
-            } else page = (Page<Offer>) offersService.getOffersByManufacturer(offerFilter.getManufacturerId());
-
-        } else {
-        //    offers = offersService.getOffers();
-            page=offersService.page(pageable);
+            } else offers = offersService.getOffersByManufacturer(offerFilter.getManufacturerId());
         }
+
 
         model.addAttribute("carManufacturers", carManufacturers);
         model.addAttribute("carModels", carModels);
-        model.addAttribute("page", page);
+        model.addAttribute("offers", offers);
         return "offerList";
     }
 

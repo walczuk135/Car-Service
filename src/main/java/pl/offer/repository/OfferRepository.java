@@ -1,21 +1,19 @@
-package pl.ogloszenia.repository;
+package pl.offer.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import pl.ogloszenia.jpa.CarModel;
-import pl.ogloszenia.jpa.Offer;
+import pl.offer.jpa.Offer;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OfferRepository extends JpaRepository<Offer,Integer> {
 
-    Offer findOfferById(int id);
+    Optional<Offer> findOfferById(int id);
 
 
-    Page<Offer> findAll(Pageable pageable);
+    List<Offer> findAll();
 
 
     List<Offer> findOfferByModelId(int modelId);

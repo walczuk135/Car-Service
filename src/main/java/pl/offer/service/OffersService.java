@@ -1,22 +1,19 @@
-package pl.ogloszenia.service;
+package pl.offer.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.ogloszenia.jpa.*;
-import pl.ogloszenia.repository.*;
+import pl.offer.jpa.*;
+import pl.offer.repository.*;
 
 import java.util.List;
 
 @Service
-@Transactional
 public class OffersService {
-    OfferRepository offerRepository;
-    CarModelRepository carModelRepository;
-    CarManufacturerRepository carManufacturerRepository;
-    BodyStyleRepository bodyStyleRepository;
-    FuelTypeRepository fuelTypeRepository;
+    private final OfferRepository offerRepository;
+    private final CarModelRepository carModelRepository;
+    private final CarManufacturerRepository carManufacturerRepository;
+    private final BodyStyleRepository bodyStyleRepository;
+    private final FuelTypeRepository fuelTypeRepository;
 
     public OffersService(OfferRepository offerRepository, CarModelRepository carModelRepository, CarManufacturerRepository carManufacturerRepository, BodyStyleRepository bodyStyleRepository, FuelTypeRepository fuelTypeRepository) {
         this.offerRepository = offerRepository;
@@ -27,15 +24,19 @@ public class OffersService {
     }
 
     public CarManufacturer getCarManufacturer(int id) {
-        return carManufacturerRepository.findOfferById(id);
+        return carManufacturerRepository.findOfferById(id).orElseThrow(IllegalStateException::new);
+    }
+
+    public List<Offer> getAllOffer() {
+        return offerRepository.findAll();
     }
 
     public Offer getOffer(int id) {
-        return offerRepository.findOfferById(id);
+        return offerRepository.findOfferById(id).orElseThrow(IllegalStateException::new);
     }
 
     public CarModel getModel(int id) {
-        return carModelRepository.findOfferById(id);
+        return carModelRepository.findOfferById(id).orElseThrow(IllegalStateException::new);
     }
 
     public List<CarManufacturer> getCarManufacturers() {
@@ -58,10 +59,6 @@ public class OffersService {
         return carModelRepository.findByManufacturerId(manufacturerId);
     }
 
-    public List<Offer> getOffers() {
-        return offerRepository.findAll();
-    }
-
     public List<Offer> getOffersByModel(int modelId) {
         return offerRepository.findOfferByModelId(modelId);
     }
@@ -70,23 +67,21 @@ public class OffersService {
     public List<Offer> getOffersByManufacturer(int manufacturerId) {
         return offerRepository.findOffersByManufacturerId(manufacturerId);
     }
-    public Page<Offer> page(Pageable pageable){
-        return offerRepository.findAll(pageable);
-    }
 
+    @Transactional
     public Offer createOffer(Offer offer) {
-        offerRepository.save(offer);
-        return offer;
+        return offerRepository.save(offer);
     }
 
+    @Transactional
     public Offer deleteOffer(Integer id) {
-        Offer offer = offerRepository.findOfferById(id);
+        Offer offer = offerRepository.findOfferById(id).orElseThrow(() -> new IllegalStateException("There is no such advertisement\n"));
         offerRepository.delete(offer);
         return offer;
     }
 
+    @Transactional
     public Offer saveOffer(Offer offer) {
-
         return offerRepository.save(offer);
     }
 
