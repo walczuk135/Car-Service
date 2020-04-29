@@ -1,26 +1,25 @@
 # Project Name
-> Here goes your awesome project description!
+Car offer Service
 
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+Car Service offer. CRUD application that holds car purchase offers.  
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Java - version 8++
+* Spring Boot , Spring Data , Spring MVC
+* Thymeleaf
+* H2 Database
 
 ## Setup
 Describe how to install / setup your local environement / add link to demo version.
@@ -40,7 +39,7 @@ To-do list:
 * Wow improvement to be done 2
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Project is: _in progress_
 
 ## Inspiration
 Add here credits. Project inspired by..., based on...
