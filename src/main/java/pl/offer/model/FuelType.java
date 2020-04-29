@@ -1,24 +1,20 @@
-package pl.offer.jpa;
+package pl.offer.model;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "car_model")
-public class CarModel {
+@Table(name = "fuel_type")
+public class FuelType {
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Integer id;
 
-    @Size(max=20)
     @Column(name = "name")
+    @Size(max = 20)
     private String name;
-
-    @JoinColumn(name = "manufacturer_id",referencedColumnName = "id")
-    @ManyToOne
-    private CarManufacturer manufacturer;
-
 
     public Integer getId() {
         return id;
@@ -35,13 +31,4 @@ public class CarModel {
     public void setName(String name) {
         this.name = name;
     }
-
-    public CarManufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(CarManufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
 }

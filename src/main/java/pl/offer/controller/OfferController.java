@@ -4,9 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.offer.jpa.*;
+import pl.offer.model.*;
 import pl.offer.service.OffersService;
-import pl.offer.web.OfferFilter;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -53,7 +52,7 @@ public class OfferController {
     @GetMapping("/newoffer")
     public String newOfferForm(Model model, Offer offer) {
         addListForm(model);
-        model.addAttribute("header", "Nowe ogłoszenie");
+        model.addAttribute("header", "New offer");
         model.addAttribute("action", "/newoffer");
         return "offerForm";
     }
@@ -68,7 +67,7 @@ public class OfferController {
             addListForm(model);
             return "offerForm";
         }
-        model.addAttribute("header", "Nowe ogłoszenie");
+        model.addAttribute("header", "New offer");
         model.addAttribute("action", "/newoffer");
         offer = offersService.createOffer(offer);
         return "redirect:/offer/" + offer.getId();
@@ -89,7 +88,7 @@ public class OfferController {
 
         Offer offer = offersService.getOffer(id);
         model.addAttribute("offer", offer);
-        model.addAttribute("header", "Edycja ogłoszenia");
+        model.addAttribute("header", "Editing an offer");
         model.addAttribute("action", "/editoffer/" + id);
         return "offerForm";
     }
@@ -97,7 +96,7 @@ public class OfferController {
     @PostMapping("/editoffer/{id}")
     public String saveEditedOffer(Model model, @PathVariable("id") Integer id, @Valid Offer offer, BindingResult binding) {
         if (binding.hasErrors()) {
-            model.addAttribute("header", "Edycja ogłoszenia");
+            model.addAttribute("header", "Editing an offer");
             model.addAttribute("action", "/editoffer/" + id);
 
             defaultModel(model);

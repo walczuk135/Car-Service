@@ -2,7 +2,7 @@ package pl.offer.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.offer.jpa.*;
+import pl.offer.model.*;
 import pl.offer.repository.*;
 
 import java.util.List;

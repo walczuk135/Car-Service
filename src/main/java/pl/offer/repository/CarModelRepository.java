@@ -1,7 +1,7 @@
 package pl.offer.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.offer.jpa.CarModel;
+import pl.offer.model.CarModel;
 
 import java.util.List;
 import java.util.Optional;

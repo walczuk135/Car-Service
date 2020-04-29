@@ -1,4 +1,4 @@
-package pl.offer.jpa;
+package pl.offer.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;

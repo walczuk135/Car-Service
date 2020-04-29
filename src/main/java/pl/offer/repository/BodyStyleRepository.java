@@ -1,7 +1,7 @@
 package pl.offer.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.offer.jpa.BodyStyle;
+import pl.offer.model.BodyStyle;
 
 import java.util.List;
 

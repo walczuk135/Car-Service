@@ -1,6 +1,6 @@
-package pl.offer.web;
+package pl.offer.controller;
 
-public class OfferFilter {
+class OfferFilter {
     private Integer manufacturerId;
     private Integer modelId;
 

@@ -3,7 +3,7 @@ package pl.offer.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import pl.offer.jpa.Offer;
+import pl.offer.model.Offer;
 
 import java.util.List;
 import java.util.Optional;

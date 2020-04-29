@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
-    <title>Lista ofert</title>
+    <title>List of offers</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -11,29 +11,29 @@
 <section layout:fragment="content">
 
     <div id="offerFilter" class="panel panel-default">
-        <div class="panel-heading">Szukaj ofert</div>
+        <div class="panel-heading">Search offers</div>
         <div class="panel-body">
             <form id="offerFilterForm" action="/" method="get" class="form-inline" th:object="${offerFilter}">
                 <select class="form-control" th:field="*{manufacturerId}">
-                    <option value="">Marka</option>
+                    <option value="">Mark</option>
                     <option th:each="manufacturer : ${carManufacturers}" th:value="${manufacturer.id}" th:text="${manufacturer.name}"></option>
                 </select>
                 <select class="form-control" th:field="*{modelId}" >
                     <option value="">Model</option>
                     <option th:each="model : ${carModels}" th:value="${model.id}" th:text="${model.name}"></option>
                 </select>
-                <input type="submit" value="Filtruj" class="form-control"/>
+                <input type="submit" value="Filter" class="form-control"/>
             </form>
         </div>
     </div>
 
     <table class="table">
         <tr>
-            <th>Tytuł</th>
-            <th>Marka</th>
+            <th>Title</th>
+            <th>Mark</th>
             <th>Model</th>
-            <th>Rocznik</th>
-            <th>Cena</th>
+            <th>Yearbook</th>
+            <th>Price</th>
             <th></th>
         </tr>
         <tr th:each="offer : ${offers}">
@@ -43,25 +43,11 @@
             <td th:text="${offer.year}"></td>
             <td class="text-right">
                 <span th:text="${#numbers.formatDecimal(offer.price, 0, 'WHITESPACE', 0,'COMMA')}"></span>
-                zł
+                $
             </td>
-            <td><a th:href="|/offer/${offer.id}|">Pokaż</a></td>
+            <td><a th:href="|/offer/${offer.id}|">Show offer</a></td>
     </table>
 
-<!--    <div class="pagination-div">-->
-<!--    <span th:if="${page.hasPrevious()}">-->
-<!--        <a th:href="@{/(page=${page.number-1},size=${page.size})}">Previous</a>-->
-<!--    </span>-->
-<!--        <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">-->
-<!--            <span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>-->
-<!--            <span th:unless="${page.number == i}">-->
-<!--             <a th:href="@{/(page=${i},size=${page.size})}">[[${i}+1]]</a>-->
-<!--        </span>-->
-<!--        </th:block>-->
-<!--        <span th:if="${page.hasNext()}">-->
-<!--        <a th:href="@{/(page=${page.number+1},size=${page.size})}">Next</a>-->
-<!--    </span>-->
-<!--    </div>-->
 
 </section>
 </body>
